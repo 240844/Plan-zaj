@@ -19,7 +19,7 @@ public class ProfessorController {
     }
 
     @GetMapping
-    public List<Professor> getStudents() {
+    public List<Professor> getProfessors() {
         return professorService.getProfessors();
     }
 }

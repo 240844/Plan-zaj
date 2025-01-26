@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Service component for student
@@ -22,8 +23,8 @@ public class StudentService {
         return studentRepository.findAll();
     }
 
-    public List<Student> getStudents(Long id) {
-        return studentRepository.findById(id).stream().toList();
+    public Optional<Student> getStudent(Long id) {
+        return studentRepository.findById(id);
     }
 
 }

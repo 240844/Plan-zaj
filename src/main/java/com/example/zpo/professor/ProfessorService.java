@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProfessorService {
@@ -20,8 +21,8 @@ public class ProfessorService {
         return professorRepository.findAll();
     }
 
-    public List<Professor> getProfessors(Long id) {
-        return professorRepository.findById(id).stream().toList();
+    public Optional<Professor> getProfessor(Long id) {
+        return professorRepository.findById(id);
     }
 
 }
