@@ -10,32 +10,35 @@ public class UniversityClass {
 
     @Id
     private Long id;
-    private Long hall_id;
-    private Long professor_id;
-    private Long group_id;
+    @Column(name = "hall_id")
+    private Long hallID;
+    @Column(name = "professor_id")
+    private Long professorID;
+    @Column(name = "group_id")
+    private Long groupID;
     @Column(name = "time_start")
     private LocalTime start_time;
     private Long duration; //Duration of class in minutes
     private Long class_type;
     private String day_of_week;
 
-    public UniversityClass(Long id, Long hall_id, Long professor_id, Long group_id, LocalTime start_time, Long duration,
+    public UniversityClass(Long id, Long hallID, Long professorID, Long groupID, LocalTime start_time, Long duration,
                            Long class_type, String day_of_week) {
         this.id = id;
-        this.hall_id = hall_id;
-        this.professor_id = professor_id;
-        this.group_id = group_id;
+        this.hallID = hallID;
+        this.professorID = professorID;
+        this.groupID = groupID;
         this.start_time = start_time;
         this.duration = duration;
         this.class_type = class_type;
         this.day_of_week = day_of_week;
     }
 
-    public UniversityClass(Long hall_id, Long professor_id, Long group_id, LocalTime start_time, Long duration,
+    public UniversityClass(Long hallID, Long professorID, Long groupID, LocalTime start_time, Long duration,
                            Long class_type, String day_of_week) {
-        this.hall_id = hall_id;
-        this.professor_id = professor_id;
-        this.group_id = group_id;
+        this.hallID = hallID;
+        this.professorID = professorID;
+        this.groupID = groupID;
         this.start_time = start_time;
         this.duration = duration;
         this.class_type = class_type;
@@ -53,28 +56,28 @@ public class UniversityClass {
         this.id = id;
     }
 
-    public Long getHall_id() {
-        return hall_id;
+    public Long getHallID() {
+        return hallID;
     }
 
-    public void setHall_id(Long hall_id) {
-        this.hall_id = hall_id;
+    public void setHallID(Long hall_id) {
+        this.hallID = hall_id;
     }
 
-    public Long getProfessor_id() {
-        return professor_id;
+    public Long getProfessorID() {
+        return professorID;
     }
 
-    public void setProfessor_id(Long professor_id) {
-        this.professor_id = professor_id;
+    public void setProfessorID(Long professor_id) {
+        this.professorID = professor_id;
     }
 
-    public Long getGroup_id() {
-        return group_id;
+    public Long getGroupID() {
+        return groupID;
     }
 
-    public void setGroup_id(Long group_id) {
-        this.group_id = group_id;
+    public void setGroupID(Long group_id) {
+        this.groupID = group_id;
     }
 
     public LocalTime getStart_time() {
@@ -113,9 +116,9 @@ public class UniversityClass {
     public String toString() {
         return "UniversityClass{" +
                 "id=" + id +
-                ", hall_id=" + hall_id +
-                ", professor_id=" + professor_id +
-                ", group_id=" + group_id +
+                ", hall_id=" + hallID +
+                ", professor_id=" + professorID +
+                ", group_id=" + groupID +
                 ", start_time=" + start_time +
                 ", duration=" + duration +
                 ", class_type=" + class_type +

@@ -19,7 +19,7 @@ public class ClassService {
     }
 
     public List<UniversityClass> getAll() {
-        return classRepository.findAll();
+        return classRepository.findByHallID(1L);
     }
 
     public Optional<UniversityClass> getByID(Long id) {
