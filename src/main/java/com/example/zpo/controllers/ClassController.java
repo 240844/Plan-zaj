@@ -1,5 +1,6 @@
 package com.example.zpo.controllers;
 
+import com.example.zpo.dtos.ClassDTO;
 import com.example.zpo.entity.UniversityClass;
 import com.example.zpo.services.ClassService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class ClassController {
     }
 
     @GetMapping
-    public List<UniversityClass> getClasses() {
+    public List<ClassDTO> getClasses() {
         return classService.getAll();
     }
 

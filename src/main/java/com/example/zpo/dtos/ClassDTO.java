@@ -5,8 +5,7 @@ public record ClassDTO(
         String professorName,
         String groupName,
         String type,
-        String hall,
-        String building
+        String hall
 ) {
 
 }

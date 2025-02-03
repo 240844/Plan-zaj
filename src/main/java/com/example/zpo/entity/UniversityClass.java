@@ -21,6 +21,8 @@ public class UniversityClass {
     private Long duration; //Duration of class in minutes
     private Long class_type;
     private String day_of_week;
+    @Transient
+    private String name;
 
     public UniversityClass(Long id, Long hallID, Long professorID, Long groupID, LocalTime start_time, Long duration,
                            Long class_type, String day_of_week) {
@@ -50,6 +52,10 @@ public class UniversityClass {
 
     public Long getId() {
         return id;
+    }
+
+    public String getName(){
+        return this.name;
     }
 
     public void setId(Long id) {

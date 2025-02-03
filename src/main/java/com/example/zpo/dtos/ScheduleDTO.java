@@ -2,7 +2,7 @@ package com.example.zpo.dtos;
 
 import java.util.List;
 
-public record scheduleDTO(
+public record ScheduleDTO(
         List<DayScheduleDTO> weeklySchedule
 ) {
 }
