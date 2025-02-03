@@ -1,6 +1,6 @@
 package com.example.zpo.repositories;
 
-import com.example.zpo.daos.Group;
+import com.example.zpo.entity.Group;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface GroupRepository

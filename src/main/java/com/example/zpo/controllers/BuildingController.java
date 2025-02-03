@@ -1,6 +1,6 @@
 package com.example.zpo.controllers;
 
-import com.example.zpo.daos.Building;
+import com.example.zpo.entity.Building;
 import com.example.zpo.services.BuildingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

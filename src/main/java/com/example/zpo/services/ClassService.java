@@ -1,6 +1,6 @@
 package com.example.zpo.services;
 
-import com.example.zpo.daos.UniversityClass;
+import com.example.zpo.entity.UniversityClass;
 import com.example.zpo.repositories.ClassRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

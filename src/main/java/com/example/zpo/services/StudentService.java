@@ -1,7 +1,7 @@
 package com.example.zpo.services;
 
 import com.example.zpo.repositories.StudentRepository;
-import com.example.zpo.daos.Student;
+import com.example.zpo.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

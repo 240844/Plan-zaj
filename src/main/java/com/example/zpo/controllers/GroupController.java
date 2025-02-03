@@ -1,6 +1,6 @@
 package com.example.zpo.controllers;
 
-import com.example.zpo.daos.Group;
+import com.example.zpo.entity.Group;
 import com.example.zpo.services.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
