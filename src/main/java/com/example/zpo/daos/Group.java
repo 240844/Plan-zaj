@@ -1,4 +1,4 @@
-package com.example.zpo.group;
+package com.example.zpo.daos;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

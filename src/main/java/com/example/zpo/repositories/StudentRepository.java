@@ -1,5 +1,6 @@
-package com.example.zpo.student;
+package com.example.zpo.repositories;
 
+import com.example.zpo.daos.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

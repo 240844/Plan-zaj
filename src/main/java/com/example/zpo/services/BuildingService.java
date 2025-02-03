@@ -1,5 +1,7 @@
-package com.example.zpo.building;
+package com.example.zpo.services;
 
+import com.example.zpo.daos.Building;
+import com.example.zpo.repositories.BuildingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

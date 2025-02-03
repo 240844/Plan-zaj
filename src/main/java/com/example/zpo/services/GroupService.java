@@ -1,5 +1,7 @@
-package com.example.zpo.group;
+package com.example.zpo.services;
 
+import com.example.zpo.daos.Group;
+import com.example.zpo.repositories.GroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

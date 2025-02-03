@@ -1,6 +1,7 @@
-package com.example.zpo.group;
+package com.example.zpo.controllers;
 
-import com.example.zpo.hall.Hall;
+import com.example.zpo.daos.Group;
+import com.example.zpo.services.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

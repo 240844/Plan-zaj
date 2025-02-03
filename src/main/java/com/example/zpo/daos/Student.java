@@ -1,4 +1,4 @@
-package com.example.zpo.student;
+package com.example.zpo.daos;
 
 import jakarta.persistence.*;
 

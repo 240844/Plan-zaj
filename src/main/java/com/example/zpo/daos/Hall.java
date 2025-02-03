@@ -1,4 +1,4 @@
-package com.example.zpo.hall;
+package com.example.zpo.daos;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
