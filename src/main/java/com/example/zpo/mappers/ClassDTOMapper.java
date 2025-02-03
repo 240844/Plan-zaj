@@ -43,7 +43,7 @@ public class ClassDTOMapper implements Function<UniversityClass, ClassDTO> {
                         .orElse("No Professor Found"),
                 groupRepository.findById(universityClass.getGroupID())
                         .map(Group::getGroup_name)
-                        .orElse("No Professor Found"),
+                        .orElse("No group Found"),
                 "Typ",
                 hallRepository.findById(universityClass.getHallID())
                         .map(Hall::getHall_name)
