@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Selection Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-10">
+<h1 class="text-2xl font-bold mb-4">Select Category and ID</h1>
+
+<form action="/selection" method="post">
+    <label for="category" class="block text-lg font-semibold">Choose a Category:</label>
+    <select id="category" name="category" class="block p-2 border mb-4" onchange="populateIds()">
+        <option value="">--Select--</option>
+        <th:block th:each="category : ${categories}">
+            <option th:value="${category}" th:text="${category}"></option>
+        </th:block>
+    </select>
+
+    <label for="selectedId" class="block text-lg font-semibold">Choose an ID:</label>
+    <select id="selectedId" name="selectedId" class="block p-2 border mb-4">
+        <option value="">--Select--</option>
+    </select>
+
+    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
+</form>
+
+<script>
+    const idOptions = JSON.parse([[${idOptions}]])/* {}*/;
+    console.log(idOptions); // Debugging in browser console
+
+    function populateIds() {
+        const categorySelect = document.getElementById('category');
+        const selectedIdSelect = document.getElementById('selectedId');
+        const category = categorySelect.value;
+
+        selectedIdSelect.innerHTML = '<option value="">--Select--</option>';
+
+        if (idOptions[category]) {
+            idOptions[category].forEach(id => {
+                const option = document.createElement('option');
+                option.value = id;
+                option.textContent = id;
+                selectedIdSelect.appendChild(option);
+            });
+        }
+    }
+</script>
+</body>
+</html>
