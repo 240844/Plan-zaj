@@ -8,6 +8,7 @@ import com.example.zpo.mappers.ClassDTOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.time.LocalTime;
 import java.util.Optional;
@@ -17,6 +18,9 @@ import java.util.stream.Collectors;
 @Service
 public class ScheduleService {
 
+    private final String[] DAYS = {
+            "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+    };
     private final ClassDTOMapper classDTOMapper;
     private final ClassService classService;
 
@@ -58,7 +62,7 @@ public class ScheduleService {
             // Create partial class DTO for this slot
             ClassDTO partialClass = classDTOMapper.apply(universityClass);
             // Add class to the slot
-            hourSlot.classes().add(partialClass);
+            hourSlot.classes().put(universityClass.getDay_of_week(), partialClass);
 
             // Update time and duration
             remainingDuration -= minutesInCurrentSlot;
@@ -70,7 +74,14 @@ public class ScheduleService {
         List<HourSlotDTO> hourSlots = new ArrayList<>();
 
         for (int hour = 8; hour <= 20; hour++) {
-            hourSlots.add(new HourSlotDTO(String.format("%02d:00", hour), new ArrayList<>()));
+            hourSlots.add(new HourSlotDTO(String.format("%02d:00", hour), new HashMap<>()));
+        }
+
+
+        for(HourSlotDTO hourSlot : hourSlots){
+            for(String day : DAYS) {
+                hourSlot.classes().put(day, null);
+            }
         }
 
         return hourSlots;
