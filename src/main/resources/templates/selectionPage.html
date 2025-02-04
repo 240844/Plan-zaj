@@ -24,9 +24,8 @@
     <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
 </form>
 
-<script>
-    const idOptions = JSON.parse([[${idOptions}]])/* {}*/;
-    console.log(idOptions); // Debugging in browser console
+<script th:inline="javascript">
+    const idOptions = [[${idOptions}]];
 
     function populateIds() {
         const categorySelect = document.getElementById('category');
@@ -34,9 +33,10 @@
         const category = categorySelect.value;
 
         selectedIdSelect.innerHTML = '<option value="">--Select--</option>';
-
-        if (idOptions[category]) {
-            idOptions[category].forEach(id => {
+        const parsedOptions = JSON.parse(idOptions);
+        console.log(parsedOptions[category])
+        if (parsedOptions[category]) {
+            parsedOptions[category].forEach(id => {
                 const option = document.createElement('option');
                 option.value = id;
                 option.textContent = id;
