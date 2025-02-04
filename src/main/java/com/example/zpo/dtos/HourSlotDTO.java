@@ -4,7 +4,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 public record HourSlotDTO(
-        LocalTime hour,
+        String hour,
         List<ClassDTO> classes
 ) {
 }

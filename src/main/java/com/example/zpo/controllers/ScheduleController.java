@@ -20,7 +20,7 @@ public class ScheduleController {
     }
 
     @GetMapping
-    public List<ScheduleDTO> getClasses() {
-        return scheduleService.getAll();
+    public ScheduleDTO getClasses() {
+        return scheduleService.getScheduleForGroup(1L);
     }
 }
