@@ -34,8 +34,13 @@ public class ClassService {
                 ).collect(Collectors.toList());
     }
 
+    public List<UniversityClass> getByStudentID(Long id){
+        return classRepository.findClassesByStudentId(id);
+    }
+
+
     public List<UniversityClass> getByProfessorID(Long id){
-        return classRepository.findByGroupID(id);
+        return classRepository.findByProfessorID(id);
     }
 
     public List<UniversityClass> getByGroupID(Long id){

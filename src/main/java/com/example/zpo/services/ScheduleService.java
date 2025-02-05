@@ -27,6 +27,11 @@ public class ScheduleService {
         this.classService = classService;
     }
 
+    public ScheduleDTO getScheduleForStudent(Long studentID) {
+        List<HourSlotDTO> hourSlotDTOS = this.hourSlotService.createSchedule(classService.getByStudentID(studentID));
+        return new ScheduleDTO(hourSlotDTOS);
+    }
+
     public ScheduleDTO getScheduleForGroup(Long groupID) {
         List<HourSlotDTO> hourSlotDTOS = this.hourSlotService.createSchedule(classService.getByGroupID(groupID));
         return new ScheduleDTO(hourSlotDTOS);

@@ -8,4 +8,16 @@ public record ClassDTO(
         String hall
 ) {
 
+    @Override
+    public String toString() {
+        StringBuilder output = new StringBuilder("{\n");
+
+        output.append("\"subjectName\": \"").append(subjectName).append("\",\n");
+        output.append("\"professorName\": \"").append(professorName).append("\",\n");
+        output.append("\"groupName\": \"").append(groupName).append("\",\n");
+        output.append("\"type\": \"").append(type).append("\",\n");
+        output.append("\"hall\": \"").append(hall).append("\"\n");
+        output.append("}");
+        return output.toString();
+    }
 }

@@ -1,7 +1,9 @@
 package com.example.zpo.controllers;
 
+import com.example.zpo.dtos.ScheduleDTO;
 import com.example.zpo.services.GroupService;
 import com.example.zpo.services.ProfessorService;
+import com.example.zpo.services.ScheduleService;
 import com.example.zpo.services.StudentService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,14 +28,17 @@ public class SelectionController {
     private final GroupService groupService;
     private final StudentService studentService;
     private final List<String> categories = List.of("Professor", "Group", "Student");
+    private final ScheduleService scheduleService;
 
     @Autowired
     public SelectionController(ProfessorService professorService,
                                GroupService groupService,
-                               StudentService studentService) {
+                               StudentService studentService,
+                               ScheduleService scheduleService) {
         this.professorService = professorService;
         this.groupService = groupService;
         this.studentService = studentService;
+        this.scheduleService = scheduleService;
     }
 
     @GetMapping
@@ -66,7 +71,17 @@ public class SelectionController {
             @RequestParam String selectedId,
             Model model) {
         System.out.println("ID " + selectedId);
+        ScheduleDTO schedule = switch (category) {
+            case "Professor" ->
+                    scheduleService.getScheduleForProfessor(Long.parseLong(selectedId));
+            case "Group" ->
+                    scheduleService.getScheduleForGroup(Long.parseLong(selectedId));
+            case "Student" ->
+                    scheduleService.getScheduleForStudent(Long.parseLong(selectedId));
+            default -> null;
+        };
         model.addAttribute("message", "You selected: " + category + " with ID: " + selectedId);
+        model.addAttribute("schedule", schedule);
         return "resultPage";
     }
 

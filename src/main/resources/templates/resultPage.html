@@ -5,5 +5,69 @@
 </head>
 <body>
 <h1 th:text="${message}"></h1>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Hour</th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+        <th>Saturday</th>
+        <th>Sunday</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Loop through weeklySchedule and create table rows -->
+    <tr th:each="weeklySchedule : ${schedule.weeklySchedule}">
+        <td th:text="${weeklySchedule.hour}"></td>
+
+        <!-- Monday -->
+        <td>
+            <span th:text="${weeklySchedule.classes['Monday'] != null ? weeklySchedule.classes['Monday'].subjectName + '   ' + weeklySchedule.classes['Monday'].groupName : ''}"></span><br/>
+            <span th:text="${weeklySchedule.classes['Monday'] != null ? weeklySchedule.classes['Monday'].type + ' ' + weeklySchedule.classes['Monday'].hall + ' ' + weeklySchedule.classes['Monday'].professorName : ''}"></span>
+        </td>
+
+        <!-- Tuesday -->
+        <td>
+            <span th:text="${weeklySchedule.classes['Tuesday'] != null ? weeklySchedule.classes['Tuesday'].subjectName + '   ' + weeklySchedule.classes['Tuesday'].groupName : ''}"></span><br/>
+            <span th:text="${weeklySchedule.classes['Tuesday'] != null ? weeklySchedule.classes['Tuesday'].type + ' ' + weeklySchedule.classes['Tuesday'].hall + ' ' + weeklySchedule.classes['Tuesday'].professorName : ''}"></span>
+        </td>
+
+        <!-- Wednesday -->
+        <td>
+            <span th:text="${weeklySchedule.classes['Wednesday'] != null ? weeklySchedule.classes['Wednesday'].subjectName + '   ' + weeklySchedule.classes['Wednesday'].groupName : ''}"></span><br/>
+            <span th:text="${weeklySchedule.classes['Wednesday'] != null ? weeklySchedule.classes['Wednesday'].type + ' ' + weeklySchedule.classes['Wednesday'].hall + ' ' + weeklySchedule.classes['Wednesday'].professorName : ''}"></span>
+        </td>
+
+        <!-- Thursday -->
+        <td>
+            <span th:text="${weeklySchedule.classes['Thursday'] != null ? weeklySchedule.classes['Thursday'].subjectName + '   ' + weeklySchedule.classes['Thursday'].groupName : ''}"></span><br/>
+            <span th:text="${weeklySchedule.classes['Thursday'] != null ? weeklySchedule.classes['Thursday'].type + ' ' + weeklySchedule.classes['Thursday'].hall + ' ' + weeklySchedule.classes['Thursday'].professorName : ''}"></span>
+        </td>
+
+        <!-- Friday -->
+        <td>
+            <span th:text="${weeklySchedule.classes['Friday'] != null ? weeklySchedule.classes['Friday'].subjectName + '   ' + weeklySchedule.classes['Friday'].groupName : ''}"></span><br/>
+            <span th:text="${weeklySchedule.classes['Friday'] != null ? weeklySchedule.classes['Friday'].type + ' ' + weeklySchedule.classes['Friday'].hall + ' ' + weeklySchedule.classes['Friday'].professorName : ''}"></span>
+        </td>
+
+        <!-- Saturday -->
+        <td>
+            <span th:text="${weeklySchedule.classes['Saturday'] != null ? weeklySchedule.classes['Saturday'].subjectName + '   ' + weeklySchedule.classes['Saturday'].groupName : ''}"></span><br/>
+            <span th:text="${weeklySchedule.classes['Saturday'] != null ? weeklySchedule.classes['Saturday'].type + ' ' + weeklySchedule.classes['Saturday'].hall + ' ' + weeklySchedule.classes['Saturday'].professorName : ''}"></span>
+        </td>
+
+        <!-- Sunday -->
+        <td>
+            <span th:text="${weeklySchedule.classes['Sunday'] != null ? weeklySchedule.classes['Sunday'].subjectName + '   ' + weeklySchedule.classes['Sunday'].groupName : ''}"></span><br/>
+            <span th:text="${weeklySchedule.classes['Sunday'] != null ? weeklySchedule.classes['Sunday'].type + ' ' + weeklySchedule.classes['Sunday'].hall + ' ' + weeklySchedule.classes['Sunday'].professorName : ''}"></span>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
 </body>
 </html>
