@@ -22,10 +22,10 @@ import java.util.Map;
 
 /*
 TODO:
-    1. add name and foreign key to class table
-    2. add setter, getter and fields to University class
-    3. Add building name to building table
     4. Fix classDTO to have building, and add it to mapper and toString
+    5. Change professor id to ID NAME
+    6. Change group id to ID NAME
+    7. Add seeking lectures in
  */
 
 @Controller

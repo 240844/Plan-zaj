@@ -56,6 +56,7 @@ public class HourSlotService {
             Long minutesInCurrentSlot = Math.min(remainingDuration, 60 - currentTime.getMinute());
 
             // Create partial class DTO for this slot
+            // TODO: ADD SEEKING LECTURES
             ClassDTO partialClass = classDTOMapper.apply(universityClass);
             // Add class to the slot
             hourSlot.classes().put(universityClass.getDay_of_week(), partialClass);
