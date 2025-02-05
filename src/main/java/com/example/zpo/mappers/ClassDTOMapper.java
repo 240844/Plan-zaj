@@ -37,14 +37,14 @@ public class ClassDTOMapper implements Function<UniversityClass, ClassDTO> {
     @Override
     public ClassDTO apply(UniversityClass universityClass){
         return new ClassDTO(
-                "UniversityClass.getName()",
+                universityClass.getName(),
                 professorRepository.findById(universityClass.getProfessorID())
                         .map(Professor::getName)
                         .orElse("No Professor Found"),
                 groupRepository.findById(universityClass.getGroupID())
                         .map(Group::getGroup_name)
                         .orElse("No group Found"),
-                "Typ",
+                universityClass.getTypeAsString(),
                 hallRepository.findById(universityClass.getHallID())
                         .map(Hall::getHall_name)
                         .orElse("No hall found")

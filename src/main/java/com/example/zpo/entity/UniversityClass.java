@@ -21,11 +21,13 @@ public class UniversityClass {
     private Long duration; //Duration of class in minutes
     private Long class_type;
     private String day_of_week;
-    @Transient
-    private String name;
+    @Column(name = "name")
+    private String nameOfClass;
+    @Column(name = "lecture_id")
+    private Long lectureID;
 
     public UniversityClass(Long id, Long hallID, Long professorID, Long groupID, LocalTime start_time, Long duration,
-                           Long class_type, String day_of_week) {
+                           Long class_type, String day_of_week, String nameOfClass, Long lectureID) {
         this.id = id;
         this.hallID = hallID;
         this.professorID = professorID;
@@ -34,10 +36,12 @@ public class UniversityClass {
         this.duration = duration;
         this.class_type = class_type;
         this.day_of_week = day_of_week;
+        this.nameOfClass = nameOfClass;
+        this.lectureID = lectureID;
     }
 
     public UniversityClass(Long hallID, Long professorID, Long groupID, LocalTime start_time, Long duration,
-                           Long class_type, String day_of_week) {
+                           Long class_type, String day_of_week, String nameOfClass, Long lectureID) {
         this.hallID = hallID;
         this.professorID = professorID;
         this.groupID = groupID;
@@ -45,6 +49,8 @@ public class UniversityClass {
         this.duration = duration;
         this.class_type = class_type;
         this.day_of_week = day_of_week;
+        this.nameOfClass = nameOfClass;
+        this.lectureID = lectureID;
     }
 
     public UniversityClass() {
@@ -55,7 +61,7 @@ public class UniversityClass {
     }
 
     public String getName(){
-        return this.name;
+        return nameOfClass;
     }
 
     public void setId(Long id) {
@@ -116,6 +122,14 @@ public class UniversityClass {
 
     public void setDay_of_week(String day_of_week) {
         this.day_of_week = day_of_week;
+    }
+
+    public String getTypeAsString(){
+        return switch (this.class_type.intValue()) {
+            case 2 -> "Lab.";
+            case 3 -> "Cw.";
+            default -> "Wyk.";
+        };
     }
 
     @Override

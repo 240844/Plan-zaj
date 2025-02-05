@@ -11,7 +11,7 @@ public interface ClassRepository
     @Query("SELECT c FROM UniversityClass c WHERE c.groupID = ?1")
     List<UniversityClass> findByGroupID(Long groupID);
 
-    @Query("SELECT c FROM UniversityClass c WHERE c.groupID = ?1")
+    @Query("SELECT c FROM UniversityClass c WHERE c.professorID = ?1")
     List<UniversityClass> findByProfessorID(Long professorID);
 
     @Query("SELECT c FROM UniversityClass c WHERE c.hallID = ?1")

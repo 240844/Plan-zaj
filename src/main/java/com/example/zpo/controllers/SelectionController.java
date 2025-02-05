@@ -20,6 +20,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/*
+TODO:
+    1. add name and foreign key to class table
+    2. add setter, getter and fields to University class
+    3. Add building name to building table
+    4. Fix classDTO to have building, and add it to mapper and toString
+ */
+
 @Controller
 @RequestMapping("/selection")
 public class SelectionController {
