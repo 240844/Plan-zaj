@@ -57,9 +57,13 @@ public class SelectionController {
         for (String category : categories) {
             List<String> id = switch (category) {
                 case "Professor" ->
-                        professorService.getProfessors().stream().map(professor -> String.valueOf(professor.getId())).toList();
+                        professorService.getProfessors().stream()
+                                .map(professor -> professor.getId() + " " + professor.getName())
+                                .toList();
                 case "Group" ->
-                        groupService.getAllGroups().stream().map(group -> String.valueOf(group.getId())).toList();
+                        groupService.getAllGroups().stream()
+                                .map(group -> group.getId() + " " + group.getGroup_name())
+                                .toList();
                 case "Student" ->
                         studentService.getStudents().stream().map(student -> String.valueOf(student.getId())).toList();
                 default -> new ArrayList<>();
@@ -81,13 +85,15 @@ public class SelectionController {
         System.out.println("ID " + selectedId);
         ScheduleDTO schedule = switch (category) {
             case "Professor" ->
-                    scheduleService.getScheduleForProfessor(Long.parseLong(selectedId));
+                    scheduleService.getScheduleForProfessor(Long.parseLong(selectedId.split(" ")[0]));
             case "Group" ->
-                    scheduleService.getScheduleForGroup(Long.parseLong(selectedId));
+                    scheduleService.getScheduleForGroup(Long.parseLong(selectedId.split(" ")[0]));
             case "Student" ->
                     scheduleService.getScheduleForStudent(Long.parseLong(selectedId));
             default -> null;
         };
+        System.out.println("Schedule: ");
+        System.out.println(schedule);
         model.addAttribute("message", "You selected: " + category + " with ID: " + selectedId);
         model.addAttribute("schedule", schedule);
         return "resultPage";

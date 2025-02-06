@@ -1,10 +1,7 @@
 package com.example.zpo.mappers;
 
 import com.example.zpo.dtos.ClassDTO;
-import com.example.zpo.entity.Group;
-import com.example.zpo.entity.Hall;
-import com.example.zpo.entity.Professor;
-import com.example.zpo.entity.UniversityClass;
+import com.example.zpo.entity.*;
 import com.example.zpo.repositories.BuildingRepository;
 import com.example.zpo.repositories.GroupRepository;
 import com.example.zpo.repositories.HallRepository;
@@ -12,6 +9,7 @@ import com.example.zpo.repositories.ProfessorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Locale;
 import java.util.function.Function;
 
 @Service
@@ -47,7 +45,11 @@ public class ClassDTOMapper implements Function<UniversityClass, ClassDTO> {
                 universityClass.getTypeAsString(),
                 hallRepository.findById(universityClass.getHallID())
                         .map(Hall::getHall_name)
-                        .orElse("No hall found")
+                        .orElse("No hall found"),
+                buildingRepository.findById(
+                        hallRepository.findById(universityClass.getHallID()).map(Hall::getBuilding_id).orElse(1L))
+                        .map(Building::getName)
+                        .orElse("No building found")
                 );
     }
 

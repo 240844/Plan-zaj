@@ -5,7 +5,8 @@ public record ClassDTO(
         String professorName,
         String groupName,
         String type,
-        String hall
+        String hall,
+        String building
 ) {
 
     @Override
@@ -16,7 +17,9 @@ public record ClassDTO(
         output.append("\"professorName\": \"").append(professorName).append("\",\n");
         output.append("\"groupName\": \"").append(groupName).append("\",\n");
         output.append("\"type\": \"").append(type).append("\",\n");
+        output.append("\"building\": \"").append(building).append("\",\n");
         output.append("\"hall\": \"").append(hall).append("\"\n");
+
         output.append("}");
         return output.toString();
     }

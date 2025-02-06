@@ -30,10 +30,25 @@ public class HourSlotService {
         List<HourSlotDTO> hourSlots = createEmptyHourSlots();
 
         for (UniversityClass universityClass : classes) {
-            LocalTime startTime = universityClass.getStart_time(); // Assuming LocalTime type
-            Long duration = universityClass.getDuration(); // Duration in minutes
+            LocalTime startTime = universityClass.getStart_time();
+            Long duration = universityClass.getDuration();
 
             assignClassToSlots(hourSlots, startTime, duration, universityClass);
+
+            if (universityClass.getLectureID() == null) {
+                continue;
+            }
+
+            UniversityClass lecture = classService.getByID(universityClass.getLectureID()).orElse(null);
+            if (lecture == null) {
+                continue;
+            }
+
+            LocalTime lectureStartTime = lecture.getStart_time();
+            Long lectureDuration = lecture.getDuration();
+
+            assignClassToSlots(hourSlots, lectureStartTime, lectureDuration, lecture);
+
         }
 
         return hourSlots;
@@ -46,22 +61,16 @@ public class HourSlotService {
         while (remainingDuration > 0) {
             int currentHour = currentTime.getHour();
 
-            // Find the corresponding hour slot
             HourSlotDTO hourSlot = hourSlots.stream()
                     .filter(slot -> slot.hour().equals(String.format("%02d:00", currentHour)))
                     .findFirst()
                     .orElseThrow(() -> new RuntimeException("Hour slot not found"));
 
-            // Calculate time for this slot (either remaining duration or full hour)
-            Long minutesInCurrentSlot = Math.min(remainingDuration, 60 - currentTime.getMinute());
+            long minutesInCurrentSlot = Math.min(remainingDuration, 60 - currentTime.getMinute());
 
-            // Create partial class DTO for this slot
-            // TODO: ADD SEEKING LECTURES
             ClassDTO partialClass = classDTOMapper.apply(universityClass);
-            // Add class to the slot
             hourSlot.classes().put(universityClass.getDay_of_week(), partialClass);
 
-            // Update time and duration
             remainingDuration -= minutesInCurrentSlot;
             currentTime = currentTime.plusMinutes(minutesInCurrentSlot);
         }

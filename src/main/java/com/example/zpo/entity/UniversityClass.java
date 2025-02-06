@@ -124,6 +124,10 @@ public class UniversityClass {
         this.day_of_week = day_of_week;
     }
 
+    public Long getLectureID(){
+        return this.lectureID;
+    }
+
     public String getTypeAsString(){
         return switch (this.class_type.intValue()) {
             case 2 -> "Lab.";
