@@ -66,13 +66,13 @@ public class HourSlotService {
                     .findFirst()
                     .orElseThrow(() -> new RuntimeException("Hour slot not found"));
 
-            long minutesInCurrentSlot = Math.min(remainingDuration, 60 - currentTime.getMinute());
 
             ClassDTO partialClass = classDTOMapper.apply(universityClass);
             hourSlot.classes().put(universityClass.getDay_of_week(), partialClass);
+            remainingDuration -= 45;
 
-            remainingDuration -= minutesInCurrentSlot;
-            currentTime = currentTime.plusMinutes(minutesInCurrentSlot);
+            currentTime = currentTime.plusMinutes(60);
+
         }
     }
 

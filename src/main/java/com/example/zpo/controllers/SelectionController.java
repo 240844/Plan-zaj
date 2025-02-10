@@ -20,14 +20,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/*
-TODO:
-    4. Fix classDTO to have building, and add it to mapper and toString
-    5. Change professor id to ID NAME
-    6. Change group id to ID NAME
-    7. Add seeking lectures in
- */
-
 @Controller
 @RequestMapping("/selection")
 public class SelectionController {
@@ -82,7 +74,6 @@ public class SelectionController {
             @RequestParam String category,
             @RequestParam String selectedId,
             Model model) {
-        System.out.println("ID " + selectedId);
         ScheduleDTO schedule = switch (category) {
             case "Professor" ->
                     scheduleService.getScheduleForProfessor(Long.parseLong(selectedId.split(" ")[0]));
@@ -92,8 +83,6 @@ public class SelectionController {
                     scheduleService.getScheduleForStudent(Long.parseLong(selectedId));
             default -> null;
         };
-        System.out.println("Schedule: ");
-        System.out.println(schedule);
         model.addAttribute("message", "You selected: " + category + " with ID: " + selectedId);
         model.addAttribute("schedule", schedule);
         return "resultPage";
