@@ -28,17 +28,17 @@ public class ScheduleService {
     }
 
     public ScheduleDTO getScheduleForStudent(Long studentID) {
-        List<HourSlotDTO> hourSlotDTOS = this.hourSlotService.createSchedule(classService.getByStudentID(studentID));
+        List<HourSlotDTO> hourSlotDTOS = this.hourSlotService.createSchedule(classService.getByStudentID(studentID), false);
         return new ScheduleDTO(hourSlotDTOS);
     }
 
     public ScheduleDTO getScheduleForGroup(Long groupID) {
-        List<HourSlotDTO> hourSlotDTOS = this.hourSlotService.createSchedule(classService.getByGroupID(groupID));
+        List<HourSlotDTO> hourSlotDTOS = this.hourSlotService.createSchedule(classService.getByGroupID(groupID), false);
         return new ScheduleDTO(hourSlotDTOS);
     }
 
     public ScheduleDTO getScheduleForProfessor(Long professorID) {
-        List<HourSlotDTO> hourSlotDTOS = this.hourSlotService.createSchedule(classService.getByProfessorID(professorID));
+        List<HourSlotDTO> hourSlotDTOS = this.hourSlotService.createSchedule(classService.getByProfessorID(professorID), true);
         return new ScheduleDTO(hourSlotDTOS);
     }
 }

@@ -26,7 +26,7 @@ public class HourSlotService {
         this.classService = classService;
     }
 
-    public List<HourSlotDTO> createSchedule(List<UniversityClass> classes) {
+    public List<HourSlotDTO> createSchedule(List<UniversityClass> classes, boolean isProfessor) {
         List<HourSlotDTO> hourSlots = createEmptyHourSlots();
 
         for (UniversityClass universityClass : classes) {
@@ -39,16 +39,17 @@ public class HourSlotService {
                 continue;
             }
 
-            UniversityClass lecture = classService.getByID(universityClass.getLectureID()).orElse(null);
-            if (lecture == null) {
-                continue;
+            if (!isProfessor) {
+                UniversityClass lecture = classService.getByID(universityClass.getLectureID()).orElse(null);
+                if (lecture == null) {
+                    continue;
+                }
+
+                LocalTime lectureStartTime = lecture.getStart_time();
+                Long lectureDuration = lecture.getDuration();
+
+                assignClassToSlots(hourSlots, lectureStartTime, lectureDuration, lecture);
             }
-
-            LocalTime lectureStartTime = lecture.getStart_time();
-            Long lectureDuration = lecture.getDuration();
-
-            assignClassToSlots(hourSlots, lectureStartTime, lectureDuration, lecture);
-
         }
 
         return hourSlots;
